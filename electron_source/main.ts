@@ -16,6 +16,6 @@ function createWindow() {
     // "react-start": "react-scripts start",
     // "electron-start": "electron .",
     // "dev": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && npm run electron-start\"",
-}
-
+} 
+ 
 app.whenReady().then(createWindow);
