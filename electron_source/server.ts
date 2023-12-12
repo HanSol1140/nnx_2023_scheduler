@@ -1,12 +1,16 @@
 // server.ts
 import express from 'express';
 const app = express();
+app.use(express.json());
+const cors = require('cors');
+app.use(cors()); // 모든 도메인에서의 요청 허용
+
 // Express
 app.get('/', (req, res) => {
   res.send('Hello from Express!');
 });
 
-const PORT = 8083;
+
 
 
 app.get("/apitest", async (req, res) => {
@@ -23,9 +27,10 @@ app.get("/apitest", async (req, res) => {
 
 
 // 서버실행코드
-// app.listen(PORT, () => {
-//   console.log(`Server listening on HTTP port ${PORT}`);
-// }); 
+const PORT = 8083;
+app.listen(PORT, () => {
+  console.log(`Server listening on HTTP port ${PORT}`);
+}); 
 
 // 일렉트론에서 사용가능하도록 exports
 export default app;
