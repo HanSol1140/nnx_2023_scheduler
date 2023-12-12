@@ -1,0 +1,14 @@
+@charset "UTF-8";
+.App {
+  text-align: center; }
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  /* 7개의 컬럼 */
+  grid-gap: 10px; }
+
+.calendar-day {
+  border: 1px solid #ddd;
+  height: 100px;
+  padding: 2px; }

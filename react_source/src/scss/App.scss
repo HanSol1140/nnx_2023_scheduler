@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+.App {
+
+    text-align: center;
+}
+.title_bar{
+    width: 600px;
+    height: 600px;
+    border: 1px solid #000;
+}
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    /* 7개의 컬럼 */
+    grid-gap: 10px;
+}
+
+.cal
