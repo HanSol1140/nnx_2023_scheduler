@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import "./css/App.css";
 
 function App() {
+    const handleClose = () => {
+        window.electron?.ipcRenderer.send('close-app');
+    };
     const [currentDate, setCurrentDate] = useState(new Date());
 
     const getDaysInMonth = (year: number, month: number) => {
@@ -29,7 +32,8 @@ function App() {
     return (
         <div className="App">
             <section className="title_bar">
-                
+                <div className='dragbtn'>드래그</div>
+                <div className='closebutton' onClick={handleClose}>종료버튼</div>
             </section>
             <section className="main">
                 <a href='http://localhost:8083/apitest'>API기능테스트</a>

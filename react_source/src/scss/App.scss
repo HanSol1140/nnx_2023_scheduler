@@ -2,7 +2,20 @@
 .App {
     border: 1px solid #000;
     text-align: center;
+    
+    .title_bar{
+        display: flex;
+        div{
+            flex: 1;
+            background-color: #ccc;
+            border: 1px solid #000;
+        }
+        div:nth-child(1){
+            -webkit-app-region: drag;
+        }
+    }
 }
+
 
 .calendar {
     display: grid;
