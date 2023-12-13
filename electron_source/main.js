@@ -24,7 +24,7 @@ function createWindow() {
     });
     // React 개발 서버 URL 로드
     win.loadFile('./web/index.html');
-    // win.loadURL('http://localhost:8083');
+    // win.loadURL('http://localhost:3000'); // npm run dev로 리액트 개발환경에서 테스트가능
     // npm install --save-dev concurrently wait-on cross-env
     // "react-start": "react-scripts start",
     // "electron-start": "electron .",
