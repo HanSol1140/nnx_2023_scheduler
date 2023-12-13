@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // main.js
 const electron_1 = require("electron");
+const path = require('node:path');
 const server_js_1 = __importDefault(require("./server.js"));
 // 서버 시작
 const PORT = 8083;
@@ -13,15 +14,17 @@ server_js_1.default.listen(PORT, () => {
 });
 function createWindow() {
     const win = new electron_1.BrowserWindow({
-        width: 1200,
-        height: 800,
+        width: 800,
+        height: 600,
         frame: false,
         webPreferences: {
             nodeIntegration: true
+            // preload: path.join(__dirname, 'preload.js'),
         }
     });
     // React 개발 서버 URL 로드
-    win.loadURL('http://localhost:8083');
+    win.loadFile('./web/index.html');
+    // win.loadURL('http://localhost:8083');
     // npm install --save-dev concurrently wait-on cross-env
     // "react-start": "react-scripts start",
     // "electron-start": "electron .",
