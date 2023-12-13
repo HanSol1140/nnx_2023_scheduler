@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // main.js
 const electron_1 = require("electron");
-// const path = require('node:path')
+const path = require('node:path');
 const server_js_1 = __importDefault(require("./server.js"));
 // 서버 시작
 const PORT = 8083;
@@ -18,14 +18,14 @@ function createWindow() {
         height: 600,
         frame: false,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
             // <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-            // preload: path.join(__dirname, 'preload.js'),
+            preload: path.join(__dirname, 'preload.js'),
         }
     });
     // React 개발 서버 URL 로드
-    // win.loadFile('./web/index.html');
-    win.loadURL('http://localhost:3000'); // npm run dev로 리액트 개발환경에서 테스트가능
+    win.loadFile('./web/index.html');
+    // win.loadURL('http://localhost:3000'); // npm run dev로 리액트 개발환경에서 테스트가능
     // npm install --save-dev concurrently wait-on cross-env
     // "react-start": "react-scripts start",
     // "electron-start": "electron .",
