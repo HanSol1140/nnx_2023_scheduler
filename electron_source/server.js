@@ -36,10 +36,10 @@ app.get("/apitest", (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 }));
 // 서버실행코드
-const PORT = 8083;
-app.listen(PORT, () => {
-    console.log(`Server listening on HTTP port ${PORT}`);
-});
+// const PORT = 8083;
+// app.listen(PORT, () => {
+//     console.log(`Server listening on HTTP port ${PORT}`);
+// });
 // 일렉트론에서 사용가능하도록 exports
 app.get('/*', function (req, res) {
     res.sendFile(path_1.default.join(__dirname, './build/index.html'), function (err) {

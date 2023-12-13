@@ -1,5 +1,12 @@
 // main.js
-const { app, BrowserWindow } = require('electron');
+import { app, BrowserWindow } from 'electron';
+import expressApp from "./server.js";
+
+// 서버 시작
+const PORT = 8083;
+expressApp.listen(PORT, () => {
+    console.log(`Server listening on HTTP port ${PORT}`);
+});
 
 function createWindow() {
     const win = new BrowserWindow({
@@ -7,17 +14,29 @@ function createWindow() {
         height: 800,
         frame: false,
         webPreferences: {
-            
+            nodeIntegration: true
         }
     });
     // React 개발 서버 URL 로드
-    win.loadURL('http://localhost:3000');
+    win.loadURL('http://localhost:8083');
     // npm install --save-dev concurrently wait-on cross-env
     // "react-start": "react-scripts start",
     // "electron-start": "electron .",
     // "dev": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && npm run electron-start\"",
 } 
  
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+    createWindow()
+
+    app.on('activate', function () {
+        // On macOS it's common to re-create a window in the app when the
+        // dock icon is clicked and there are no other windows open.
+        if (BrowserWindow.getAllWindows().length === 0) createWindow()
+    })
+});
+
+app.on('window-all-closed', function () {
+    if (process.platform !== 'darwin') app.quit()
+});
 
 
