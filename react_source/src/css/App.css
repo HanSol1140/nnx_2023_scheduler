@@ -1,5 +1,6 @@
 @charset "UTF-8";
 .App {
+  border: 1px solid #000;
   text-align: center; }
 
 .calendar {
@@ -9,6 +10,5 @@
   grid-gap: 10px; }
 
 .calendar-day {
-  border: 1px solid #ddd;
-  height: 100px;
-  padding: 2px; }
+  padding: 10px;
+  border: 1px solid #000; }

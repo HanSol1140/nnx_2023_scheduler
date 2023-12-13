@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // main.js
 const electron_1 = require("electron");
-const path = require('node:path');
+// const path = require('node:path')
 const server_js_1 = __importDefault(require("./server.js"));
 // 서버 시작
 const PORT = 8083;
@@ -19,6 +19,7 @@ function createWindow() {
         frame: false,
         webPreferences: {
             nodeIntegration: true
+            // <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
             // preload: path.join(__dirname, 'preload.js'),
         }
     });

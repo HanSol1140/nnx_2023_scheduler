@@ -29,9 +29,10 @@ function App() {
     return (
         <div className="App">
             <section className="title_bar">
-
+                
             </section>
             <section className="main">
+                <a href='http://localhost:8083/apitest'>API기능테스트</a>
                 <button onClick={() => changeMonth(-1)}>이전 달</button>
                 <button onClick={() => changeMonth(1)}>다음 달</button>
                 <div>

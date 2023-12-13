@@ -1,6 +1,6 @@
 // main.js
 import { app, BrowserWindow } from 'electron';
-const path = require('node:path')
+// const path = require('node:path')
 import expressApp from "./server.js";
 
 // 서버 시작
@@ -17,6 +17,7 @@ function createWindow() {
         frame: false,
         webPreferences: {
             nodeIntegration: true
+            // <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
             // preload: path.join(__dirname, 'preload.js'),
         }
     });
