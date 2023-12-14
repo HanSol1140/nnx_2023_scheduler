@@ -14,7 +14,8 @@
         "cors": "^2.8.5",
         "express": "^4.18.2"
     },
-    "name": "electron_source",
+    "name": "nnx_scheduler",
+    "productName": "scheduler",
     "version": "1.0.0",
     "main": "main.js",
     "scripts": {
@@ -25,8 +26,11 @@
         "dist": "electron-builder"
     },
     "build": {
+        "appId": "nnx.electron.scheduler",
+        "win": {
+        },
         "nsis": {
-            "script": "build/installer.nsh"
+            "include": "build/installer.nsh"
         }
     },
     "keywords": [],

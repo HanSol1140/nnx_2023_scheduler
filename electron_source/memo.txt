@@ -1,10 +1,27 @@
-    // React 개발 서버 URL 로드
-    // win.loadURL('http://localhost:3000'); // npm run dev
-    // npm install --save-dev concurrently wait-on cross-env
-    // "react-start": "react-scripts start",
-    // "electron-start": "electron .",
-    // "dev": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && npm run electron-start\"",
+// React 개발 서버 URL 로드
+// win.loadURL('http://localhost:3000'); // npm run dev
+// npm install --save-dev concurrently wait-on cross-env
+// "react-start": "react-scripts start",
+// "electron-start": "electron .",
+// "dev": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && npm run electron-start\"",
 
 
 
-                // <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+// <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+
+
+
+시작프로그램 설정경로
+Win + R
+regedit
+컴퓨터\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+
+
+electron.app.electronApp
+
+C:\Users\skycr\AppData\Local\Programs\electron_source\electronApp.exe --processStart "electronApp.exe"
+C:\Users\skycr\AppData\Local\Programs\electron_source\electronApp.exe
+
+
+
+C:\Users\skycr\AppData\Local\Programs\nnx_scheduler\scheduler.exe

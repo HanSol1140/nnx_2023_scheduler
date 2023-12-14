@@ -24,20 +24,9 @@ function createWindow() {
     });
     win.loadFile('./web/index.html');
 }
+console.log(electron_1.app.getLoginItemSettings());
 electron_1.app.whenReady().then(() => {
-    // 자동 실행
-    const appFolder = path.dirname(process.execPath);
-    const updateExe = path.resolve(appFolder, '..', 'Update.exe');
-    const exeName = path.basename(process.execPath);
-    electron_1.app.setLoginItemSettings({
-        openAtLogin: true,
-        path: updateExe,
-        args: [
-            '--processStart', `"${exeName}"`,
-        ]
-    });
     createWindow();
-    console.log(electron_1.app.getLoginItemSettings());
     electron_1.app.on('activate', function () {
         if (electron_1.BrowserWindow.getAllWindows().length === 0)
             createWindow();
@@ -47,11 +36,11 @@ electron_1.app.on('window-all-closed', function () {
     if (process.platform !== 'darwin')
         electron_1.app.quit();
 });
-// 종료 이벤트
+// 종료 버튼
 electron_1.ipcMain.on('close-app', () => {
     electron_1.app.quit();
 });
-// 알림 이벤트
+// 알림
 electron_1.ipcMain.on('show-alert', (event, message) => {
     const loginSettings = JSON.stringify(electron_1.app.getLoginItemSettings(), null, 2);
     electron_1.dialog.showMessageBox({

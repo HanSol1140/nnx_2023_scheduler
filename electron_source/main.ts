@@ -56,17 +56,3 @@ ipcMain.on('show-alert', (event, message) => {
         message: loginSettings
     });
 });
-
-
-
-    // 자동 실행
-    // const appFolder = path.dirname(process.execPath)
-    // const updateExe = path.resolve(appFolder, '..', 'Update.exe')
-    // const exeName = path.basename(process.execPath)
-    // app.setLoginItemSettings({
-    //     openAtLogin: true,
-    //     path: process.execPath,
-    //     args: [
-    //         '--processStart', `"${exeName}"`,
-    //     ]
-    // })
