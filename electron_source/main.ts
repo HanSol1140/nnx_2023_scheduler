@@ -3,7 +3,7 @@ import { app, BrowserWindow, ipcMain, dialog } from 'electron';
 const path = require('node:path');
 import expressApp from "./server.js";
 
-// 서버 시작
+// express
 const PORT = 8083;
 expressApp.listen(PORT, () => {
     console.log(`Server listening on HTTP port ${PORT}`);
@@ -16,13 +16,10 @@ function createWindow() {
         frame: false,
         webPreferences: {
             nodeIntegration: true,
-            // <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
             preload: path.join(__dirname, 'preload.js'),
         }
 
     });
-
-    // React 개발 서버 URL 로드
     win.loadFile('./web/index.html');
 }
 

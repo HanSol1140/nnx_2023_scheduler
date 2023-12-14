@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const electron_1 = require("electron");
 const path = require('node:path');
 const server_js_1 = __importDefault(require("./server.js"));
-// 서버 시작
+// express
 const PORT = 8083;
 server_js_1.default.listen(PORT, () => {
     console.log(`Server listening on HTTP port ${PORT}`);
@@ -19,11 +19,9 @@ function createWindow() {
         frame: false,
         webPreferences: {
             nodeIntegration: true,
-            // <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
             preload: path.join(__dirname, 'preload.js'),
         }
     });
-    // React 개발 서버 URL 로드
     win.loadFile('./web/index.html');
 }
 electron_1.app.whenReady().then(() => {
