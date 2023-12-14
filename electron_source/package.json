@@ -24,6 +24,11 @@
         "dev": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && npm run electron-start\"",
         "dist": "electron-builder"
     },
+    "build": {
+        "nsis": {
+            "script": "build/installer.nsh"
+        }
+    },
     "keywords": [],
     "author": "",
     "license": "ISC",
