@@ -5,6 +5,10 @@ function App() {
     const handleClose = () => {
         window.electron?.ipcRenderer.send('close-app');
     };
+
+    const alertbutton = () => {
+        window.electron?.ipcRenderer.send('show-alert');
+    };
     const [currentDate, setCurrentDate] = useState(new Date());
 
     const getDaysInMonth = (year: number, month: number) => {
@@ -33,6 +37,7 @@ function App() {
         <div className="App">
             <section className="title_bar">
                 <div className='dragbtn'>드래그</div>
+                <div className='closebutton' onClick={alertbutton}>알림버튼</div>
                 <div className='closebutton' onClick={handleClose}>종료버튼</div>
             </section>
             <section className="main">
