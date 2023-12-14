@@ -41,8 +41,6 @@ electron_1.app.whenReady().then(() => {
     createWindow();
     console.log(electron_1.app.getLoginItemSettings());
     electron_1.app.on('activate', function () {
-        // On macOS it's common to re-create a window in the app when the
-        // dock icon is clicked and there are no other windows open.
         if (electron_1.BrowserWindow.getAllWindows().length === 0)
             createWindow();
     });
