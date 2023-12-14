@@ -24,20 +24,21 @@ function createWindow() {
         }
     });
     // React 개발 서버 URL 로드
-    // win.loadFile('./web/index.html');
-    win.loadURL('http://localhost:3000'); // npm run dev로 리액트 개발환경에서 테스트가능
+    win.loadFile('./web/index.html');
+    // win.loadURL('http://localhost:3000'); // npm run dev로 리액트 개발환경에서 테스트가능
     // npm install --save-dev concurrently wait-on cross-env
     // "react-start": "react-scripts start",
     // "electron-start": "electron .",
     // "dev": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && npm run electron-start\"",
 }
 electron_1.app.whenReady().then(() => {
+    // 자동 실행
     const appFolder = path.dirname(process.execPath);
     const updateExe = path.resolve(appFolder, '..', 'Update.exe');
     const exeName = path.basename(process.execPath);
     electron_1.app.setLoginItemSettings({
         openAtLogin: true,
-        path: updateExe,
+        path: process.execPath,
         args: [
             '--processStart', `"${exeName}"`,
         ]
