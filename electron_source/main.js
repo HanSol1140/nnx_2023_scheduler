@@ -46,6 +46,6 @@ electron_1.ipcMain.on('show-alert', (event, message) => {
     electron_1.dialog.showMessageBox({
         type: 'info',
         title: '경고',
-        message: loginSettings
+        message: "테스트"
     });
 });

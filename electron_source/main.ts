@@ -53,6 +53,6 @@ ipcMain.on('show-alert', (event, message) => {
     dialog.showMessageBox({
         type: 'info',
         title: '경고',
-        message: loginSettings
+        message: "테스트"
     });
 });
