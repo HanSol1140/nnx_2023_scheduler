@@ -25,11 +25,6 @@ function createWindow() {
     });
     // React 개발 서버 URL 로드
     win.loadFile('./web/index.html');
-    // win.loadURL('http://localhost:3000'); // npm run dev로 리액트 개발환경에서 테스트가능
-    // npm install --save-dev concurrently wait-on cross-env
-    // "react-start": "react-scripts start",
-    // "electron-start": "electron .",
-    // "dev": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && npm run electron-start\"",
 }
 electron_1.app.whenReady().then(() => {
     // 자동 실행
@@ -38,7 +33,7 @@ electron_1.app.whenReady().then(() => {
     const exeName = path.basename(process.execPath);
     electron_1.app.setLoginItemSettings({
         openAtLogin: true,
-        path: process.execPath,
+        path: updateExe,
         args: [
             '--processStart', `"${exeName}"`,
         ]
@@ -56,11 +51,11 @@ electron_1.app.on('window-all-closed', function () {
     if (process.platform !== 'darwin')
         electron_1.app.quit();
 });
-// 종료 이벤트 리스너
+// 종료 이벤트
 electron_1.ipcMain.on('close-app', () => {
     electron_1.app.quit();
 });
-// 알림 이벤트 리스너
+// 알림 이벤트
 electron_1.ipcMain.on('show-alert', (event, message) => {
     const loginSettings = JSON.stringify(electron_1.app.getLoginItemSettings(), null, 2);
     electron_1.dialog.showMessageBox({

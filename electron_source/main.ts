@@ -24,13 +24,7 @@ function createWindow() {
 
     // React 개발 서버 URL 로드
     win.loadFile('./web/index.html');
-    // win.loadURL('http://localhost:3000'); // npm run dev로 리액트 개발환경에서 테스트가능
-    // npm install --save-dev concurrently wait-on cross-env
-    // "react-start": "react-scripts start",
-    // "electron-start": "electron .",
-    // "dev": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && npm run electron-start\"",
 }
-
 
 
 app.whenReady().then(() => {
@@ -40,12 +34,11 @@ app.whenReady().then(() => {
     const exeName = path.basename(process.execPath)
     app.setLoginItemSettings({
         openAtLogin: true,
-        path: process.execPath,
+        path: updateExe,
         args: [
             '--processStart', `"${exeName}"`,
         ]
     })
-
 
     createWindow()
     console.log(app.getLoginItemSettings());
@@ -63,13 +56,13 @@ app.on('window-all-closed', function () {
 
 
 
-// 종료 이벤트 리스너
+// 종료 이벤트
 ipcMain.on('close-app', () => {
     app.quit();
 });
 
 
-// 알림 이벤트 리스너
+// 알림 이벤트
 ipcMain.on('show-alert', (event, message) => {
     const loginSettings = JSON.stringify(app.getLoginItemSettings(), null, 2);
     dialog.showMessageBox({
