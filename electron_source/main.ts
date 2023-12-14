@@ -24,21 +24,11 @@ function createWindow() {
 }
 
 
+console.log(app.getLoginItemSettings());
 app.whenReady().then(() => {
-    // 자동 실행
-    const appFolder = path.dirname(process.execPath)
-    const updateExe = path.resolve(appFolder, '..', 'Update.exe')
-    const exeName = path.basename(process.execPath)
-    app.setLoginItemSettings({
-        openAtLogin: true,
-        path: updateExe,
-        args: [
-            '--processStart', `"${exeName}"`,
-        ]
-    })
 
     createWindow()
-    console.log(app.getLoginItemSettings());
+    
 
     app.on('activate', function () {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
@@ -51,13 +41,13 @@ app.on('window-all-closed', function () {
 
 
 
-// 종료 이벤트
+// 종료 버튼
 ipcMain.on('close-app', () => {
     app.quit();
 });
 
 
-// 알림 이벤트
+// 알림
 ipcMain.on('show-alert', (event, message) => {
     const loginSettings = JSON.stringify(app.getLoginItemSettings(), null, 2);
     dialog.showMessageBox({
@@ -67,3 +57,16 @@ ipcMain.on('show-alert', (event, message) => {
     });
 });
 
+
+
+    // 자동 실행
+    // const appFolder = path.dirname(process.execPath)
+    // const updateExe = path.resolve(appFolder, '..', 'Update.exe')
+    // const exeName = path.basename(process.execPath)
+    // app.setLoginItemSettings({
+    //     openAtLogin: true,
+    //     path: process.execPath,
+    //     args: [
+    //         '--processStart', `"${exeName}"`,
+    //     ]
+    // })
