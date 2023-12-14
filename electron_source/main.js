@@ -1,18 +1,51 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 // main.js
-const { app, BrowserWindow } = require('electron');
+const electron_1 = require("electron");
+const path = require('node:path');
+const server_js_1 = __importDefault(require("./server.js"));
+// express
+const PORT = 8083;
+server_js_1.default.listen(PORT, () => {
+    console.log(`Server listening on HTTP port ${PORT}`);
+});
 function createWindow() {
-    const win = new BrowserWindow({
-        width: 1200,
-        height: 800,
+    const win = new electron_1.BrowserWindow({
+        width: 800,
+        height: 600,
         frame: false,
-        webPreferences: {}
+        webPreferences: {
+            nodeIntegration: true,
+            preload: path.join(__dirname, 'preload.js'),
+        }
     });
-    // React 개발 서버 URL 로드
-    win.loadURL('http://localhost:3000');
-    // npm install --save-dev concurrently wait-on cross-env
-    // "react-start": "react-scripts start",
-    // "electron-start": "electron .",
-    // "dev": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && npm run electron-start\"",
+    win.loadFile('./web/index.html');
 }
-app.whenReady().then(createWindow);
+console.log(electron_1.app.getLoginItemSettings());
+electron_1.app.whenReady().then(() => {
+    createWindow();
+    electron_1.app.on('activate', function () {
+        if (electron_1.BrowserWindow.getAllWindows().length === 0)
+            createWindow();
+    });
+});
+electron_1.app.on('window-all-closed', function () {
+    if (process.platform !== 'darwin')
+        electron_1.app.quit();
+});
+// 종료 버튼
+electron_1.ipcMain.on('close-app', () => {
+    electron_1.app.quit();
+});
+// 알림
+electron_1.ipcMain.on('show-alert', (event, message) => {
+    const loginSettings = JSON.stringify(electron_1.app.getLoginItemSettings(), null, 2);
+    electron_1.dialog.showMessageBox({
+        type: 'info',
+        title: '경고',
+        message: "테스트"
+    });
+});

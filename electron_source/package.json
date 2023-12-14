@@ -11,9 +11,11 @@
         "wait-on": "^7.2.0"
     },
     "dependencies": {
+        "cors": "^2.8.5",
         "express": "^4.18.2"
     },
-    "name": "electron_source",
+    "name": "nnx_scheduler",
+    "productName": "scheduler",
     "version": "1.0.0",
     "main": "main.js",
     "scripts": {
@@ -22,6 +24,14 @@
         "electron-start": "electron .",
         "dev": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && npm run electron-start\"",
         "dist": "electron-builder"
+    },
+    "build": {
+        "appId": "nnx.electron.scheduler",
+        "win": {
+        },
+        "nsis": {
+            "include": "build/installer.nsh"
+        }
     },
     "keywords": [],
     "author": "",

@@ -1,6 +1,15 @@
 @charset "UTF-8";
 .App {
+  border: 1px solid #000;
   text-align: center; }
+  .App .title_bar {
+    display: flex; }
+    .App .title_bar div {
+      flex: 1;
+      background-color: #ccc;
+      border: 1px solid #000; }
+    .App .title_bar div:nth-child(1) {
+      -webkit-app-region: drag; }
 
 .calendar {
   display: grid;
@@ -9,6 +18,5 @@
   grid-gap: 10px; }
 
 .calendar-day {
-  border: 1px solid #ddd;
-  height: 100px;
-  padding: 2px; }
+  padding: 10px;
+  border: 1px solid #000; }

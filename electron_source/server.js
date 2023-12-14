@@ -15,11 +15,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // server.ts
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
+app.use(express_1.default.json());
+const cors = require('cors');
+app.use(cors()); // 모든 도메인에서의 요청 허용
 // Express
-app.get('/', (req, res) => {
-    res.send('Hello from Express!');
-});
-const PORT = 8083;
+// app.use(express.static('web'));
+// app.get('/', (req, res) => {
+//     res.redirect('./web/index.html');
+// });
+// 리액트 경로 설정
+// app.get('/*', function (req, res) {
+//     res.sendFile(path.join(__dirname, './web/index.html'), function (err) {
+//         if (err) {
+//             res.status(500).send(err)
+//         } 
+//     })
+// })
 app.get("/apitest", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         res.setHeader('Content-Type', 'text/plain; charset=utf-8');
@@ -32,8 +43,9 @@ app.get("/apitest", (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 }));
 // 서버실행코드
+// const PORT = 8083;
 // app.listen(PORT, () => {
-//   console.log(`Server listening on HTTP port ${PORT}`);
-// }); 
+//     console.log(`Server listening on HTTP port ${PORT}`);
+// });
 // 일렉트론에서 사용가능하도록 exports
 exports.default = app;
